@@ -44,7 +44,21 @@ public class SpellChecker {
         int loopCounter = 0; // for testing
 
         /* TODO: IMPLEMENT ME */
-
+        int left = 0;
+        int right = dictionary.size() - 1;
+        while (left <= right) {
+            loopCounter++;
+            int middle = (left + right) / 2;
+            if (word.compareTo(dictionary.get(middle)) < 0) {
+                right = middle - 1;
+            } else if (word.compareTo(dictionary.get(middle)) > 0) {
+                left = middle + 1;
+            } else {
+                System.out.println("-- BINARY SEARCH: Number of words checked (loops/runtime): " + loopCounter);
+                return true;
+            }
+        }
+        System.out.println("-- BINARY SEARCH: Number of words checked (loops/runtime): " + loopCounter);
         return false;
     }
 
